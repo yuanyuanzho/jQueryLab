@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Lab7</title>
+	<link rel="stylesheet" type="text/css" href="jquery_table.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".dropDownTextArea").css("display","none");
+		$("#button").css({
+			"disabled":"true",
+			"backgroundColor":"gray",
+			"border":"2px solid gray",
+		});
+
+	$(".boxchecked").on("click",function() {
+		var n = $("input:checked").length;
+		var flag = $(this.checked);
+		$("#button").css("disabled",(n>0)?"false":"true");
+		$("#button").css("backgroundColor",(n>0)?"orange":"gray");
+		$("#button").css("border",(n>0)?"2px solid orange":"2px solid gray");
+		$(this).parent().parent().css("backgroundColor",(flag[0]==true)?"#feff94":"#fff");
+	});
+
+	$(".spandRows").on("click",function() {
+		$(this).parent().parent().next(".dropDownTextArea").toggle();
+	});
+
+});
+</script>
+
+</head>
+<body>
+	<table id="myTable">
+		<tr>
+			<th></th>
+			<th>STUDENT</th>
+			<th>ADVISOR</th>
+			<th>AWARD<br/>STATUS</th>
+			<th>SEMESTER</th>
+			<th>TYPE</th>
+			<th>BUDGET<br />#</th>
+			<th>PERCENTAGE</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" class="boxchecked" /><br /><br /><img src="down.png" width="25px" class="spandRows" /></td>
+			<td>Student 1</td>
+			<td>Teacher 1</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>12345</td>
+			<td>100%</td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal1" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br />
+			Tuition Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal2" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br /><br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr>
+			<td><input type="checkbox" class="boxchecked" /><br /><br /><img src="down.png" width="25px" class="spandRows" /></td>
+			<td>Student 2</td>
+			<td>Teacher 2</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>23456</td>
+			<td>100%</td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal1" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br />
+			Tuition Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal2" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br /><br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr>
+			<td><input type="checkbox" class="boxchecked" /><br /><br /><img src="down.png" width="25px" class="spandRows" /></td>
+			<td>Student 3</td>
+			<td>Teacher 3</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>34567</td>
+			<td>100%</td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal1" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br />
+			Tuition Number: <button class="btn btn-xs" data-toggle="modal" data-target="#myModal2" style="background-color:#fff"><img src="pencil.png" width="25px" /></button><br /><br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+	</table>
+	<br /><br />
+	<button id="button">SUBMIT SELECTED AWARDS</button>
+
+<!-- Modal -->
+	<div class="modal fade" id="myModal1" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Change Budget Number</h4>
+			</div>
+
+			<div class="modal-body">
+				<label>New Budget Number: </label>
+				<input type="text" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default">Change Budget Number</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>	
+		</div>
+		
+	</div>
+	</div>
+
+
+<!-- Modal -->
+	<div class="modal fade" id="myModal2" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Change Tuition Number</h4>
+			</div>
+
+			<div class="modal-body">
+				<label>New Tuition Number: </label>
+				<input type="text" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default">Change Tuition Number</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>	
+		</div>
+		
+	</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
